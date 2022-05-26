@@ -1,0 +1,36 @@
+@import "src/break-points";
+
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.gallery-item {
+  width: 100%;
+  background-color: blue;
+  border: 1px solid black;
+  height: 200px;
+}
+
+
+
+
+@include small {
+
+  .container {
+    grid-template-columns: 100%;
+  }
+
+}
+
+@include medium {
+
+  .container {
+    grid-template-columns: 50% 50%;
+  }
+
+}
+

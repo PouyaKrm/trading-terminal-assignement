@@ -1,9 +1,9 @@
 $sm-max-device-width: 760px;
 $md-min-device-width: 768px;
 $md-max-device-width: 992px;
-$lg-min-device-width: 992px;
+$lg-min-device-width: 993px;
 $lg-max-device-width: 1200px;
-$xl-min-device-width: 1200px;
+$xl-min-device-width: 1201px;
 
 @mixin small() {
   @media screen and (max-device-width: $sm-max-device-width) {
@@ -28,19 +28,4 @@ $xl-min-device-width: 1200px;
   @media screen and (min-device-width: $xl-min-device-width) {
     @content;
   }
-}
-
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-.App {
-  width: 100vw;
-  height: 100vh;
-  background-color: red;
 }
