@@ -1,21 +1,27 @@
 import "./Gallery.scss";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import GalleryItem from "./gallery-item/GalleryItem";
+import axios from "../../utils";
+import {fetchGalleryItems, galleryItems} from "../../utils/gallery";
 
 const Gallery = () => {
 
-    const items = Array.from(Array(10).keys());
-    const addItems = () => {
-        let items = [];
-        for (let i = 0; i < 10; i++) {
-            const item = (
-                <div style={{backgroundColor: "red", border: "1px solid black", width: "100%", height: "100%"}}>
-                </div>
-            );
-            items.push(item)
-        }
-        return items;
-    };
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        // let intervalId = setInterval((e) => {
+        //     fetchGalleryItems().then(response => {
+        //         console.log(response);
+        //         let newItems = items.splice(0);
+        //         newItems.push(...response.data);
+        //         setItems(newItems);
+        //     })
+        // }, 1000);
+        // return () => clearInterval(intervalId);
+
+        setItems(galleryItems);
+
+    }, []);
 
     return (
         <div className="container">
@@ -23,7 +29,7 @@ const Gallery = () => {
                 items.map((e, index) => {
                     return (
                         <div key={index} className="gallery-item">
-                            <GalleryItem/>
+                            <GalleryItem imageData={e}/>
                         </div>
                     )
                 })
