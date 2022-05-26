@@ -15,40 +15,23 @@ const Gallery = () => {
         getItems();
         let intervalId = setInterval((e) => {
           getItems();
-        }, 10000);
+        }, 60000);
         return () => clearInterval(intervalId);
-        // setItems(galleryItems);
     }, []);
 
     const getItems = () => {
         fetchGalleryItems().then(response => {
-            console.log(response);
-            let newItems = items.slice();
-            newItems.push(...response.data);
-            console.log(newItems);
-            setItems(newItems);
+            setItems(items => {
+                let nt = [...items];
+                nt.push(...response.data);
+                return nt;
+            });
         });
     };
-
-    // useEffect(() => {
-    //     // let intervalId = setInterval((e) => {
-    //     //     fetchGalleryItems().then(response => {
-    //     //         console.log(response);
-    //     //         let newItems = items.splice(0);
-    //     //         newItems.push(...response.data);
-    //     //         setItems(newItems);
-    //     //     })
-    //     // }, 1000);
-    //     // return () => clearInterval(intervalId);
-    //     // setItems(galleryItems);
-    //     console.log(selectedImage);
-    // }, [selectedImage]);
-    //
 
     return (
         <div className="container">
             <GalleryModalProvider>
-
                 <GalleryContext.Provider value={{selectedImage, setSelectedImage, items}}>
                     {
                         items.map((e, index) => {
