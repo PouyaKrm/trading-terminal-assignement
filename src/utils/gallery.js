@@ -1,34 +1,6 @@
 import axios from "./axios";
-import {useEffect} from "react";
 import { axiosMockAdapterInstance } from './axios';
 
-// jest.mock("axios");
-
-// describe("fetchGalleryItems", () => {
-//     describe("success", () => {
-//         it("gallery item list", async () => {
-//
-//             axios.get.mockResolvedValueOnce(galleryItems);
-//
-//             // const result = await fetchGalleryItems();
-//         });
-//     });
-//     //
-//     // describe("when API call fails", () => {
-//     //     it("should return empty users list", async () => {
-//     //         // given
-//     //         const message = "Network Error";
-//     //         axios.get.mockRejectedValueOnce(new Error(message));
-//     //
-//     //         // when
-//     //         const result = await fetchUsers();
-//     //
-//     //         // then
-//     //         expect(axios.get).toHaveBeenCalledWith(`${BASE_URL}/users`);
-//     //         expect(result).toEqual([]);
-//     //     });
-//     // });
-// });
 
 axiosMockAdapterInstance.onGet("").reply(() => {
     let newItems = galleryItems.map(e => e);

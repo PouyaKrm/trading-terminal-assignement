@@ -7,9 +7,6 @@ import {GalleryModalProvider} from "./contexts/GalleryModalContext";
 function App() {
   return (
     <div className="App">
-        {/*<GalleryModalProvider>*/}
-        {/*    <Gallery />*/}
-        {/*</GalleryModalProvider>*/}
         <Gallery />
     </div>
   );
