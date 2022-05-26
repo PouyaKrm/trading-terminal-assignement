@@ -1,21 +1,21 @@
 import React, {createContext, useState} from "react";
 
-const ModalContext = createContext({
+const GalleryModalContext = createContext({
     open: false,
     setOpen: null,
     handleClose: () => {
     }
 });
 
-const ModalProvider = ({children}) => {
+const GalleryModalProvider = ({children}) => {
 
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
     return (
-        <ModalContext.Provider value={{open, setOpen, handleClose}}>
+        <GalleryModalContext.Provider value={{open, setOpen, handleClose}}>
             {children}
-        </ModalContext.Provider>
+        </GalleryModalContext.Provider>
     )
 };
 
-export {ModalContext, ModalProvider};
+export {GalleryModalContext, GalleryModalProvider};

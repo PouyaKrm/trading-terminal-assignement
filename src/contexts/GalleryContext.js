@@ -1,10 +1,9 @@
 import {createContext} from "react";
 
 const GalleryContext = createContext({
-    getNext: (imageId) => {},
-    getPrevious: (imageId) => {},
+    items: [],
     selectedImage: null,
-    setSelectedImage: null
+    setSelectedImage: null,
 });
 
 export default GalleryContext;

@@ -2,15 +2,15 @@ import logo from './logo.svg';
 import './App.scss';
 import Gallery from "./pages/gallery/Gallery";
 import React from "react";
-import {ModalProvider} from "./contexts/ModalContext";
+import {GalleryModalProvider} from "./contexts/GalleryModalContext";
 
 function App() {
   return (
     <div className="App">
-        <ModalProvider>
-            <Gallery />
-        </ModalProvider>
-
+        {/*<GalleryModalProvider>*/}
+        {/*    <Gallery />*/}
+        {/*</GalleryModalProvider>*/}
+        <Gallery />
     </div>
   );
 }

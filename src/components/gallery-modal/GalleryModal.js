@@ -1,18 +1,18 @@
 import React, {useContext} from "react";
 import "./GalleryModal.scss";
-import {ModalContext} from "../../contexts/ModalContext";
+import {GalleryModalContext} from "../../contexts/GalleryModalContext";
 import ModalWindow from "./ModalWindow";
 import "./GalleryModal.scss"
 
 const GalleryModal = () => {
 
-    const {open} = useContext(ModalContext);
+    const {open} = useContext(GalleryModalContext);
 
     return (
         <>
             {open &&
             (
-                <div className="modal">
+                <div className="modal" >
                     <ModalWindow/>
                 </div>
             )}

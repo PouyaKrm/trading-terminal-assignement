@@ -1,17 +1,17 @@
 import "./Gallery.scss";
 import React, {useContext, useEffect, useState} from "react";
-import GalleryItem from "./gallery-item/GalleryItem";
-import axios from "../../utils";
+import GalleryItem from "../../components/gallery-item/GalleryItem";
+import axios from "../../utils/axios";
 import {fetchGalleryItems, galleryItems} from "../../utils/gallery";
 import GalleryContext from "../../contexts/GalleryContext";
 import GalleryModal from "../../components/gallery-modal/GalleryModal";
-import {ModalContext, ModalProvider} from "../../contexts/ModalContext";
+import {GalleryModalContext, GalleryModalProvider} from "../../contexts/GalleryModalContext";
 
 const Gallery = () => {
 
     const [items, setItems] = useState([]);
-    const [selectedImage, setSelectedImage] = useState(null);
-    const {setOpen} = useContext(ModalContext);
+    const [selectedImage, setSelectedImage] = useState({});
+    // const {setOpen} = useContext(GalleryModalContext);
 
     useEffect(() => {
         // let intervalId = setInterval((e) => {
@@ -23,34 +23,29 @@ const Gallery = () => {
         //     })
         // }, 1000);
         // return () => clearInterval(intervalId);
-
         setItems(galleryItems);
-        if (setOpen) {
-            setOpen(true);
-        }
+    }, []);
 
-    }, [setOpen]);
-
-    const getNext = (imageId) => {
-      let index = items.findIndex(e => e.id === imageId);
-      if (index !== -1 && index !== items.length - 1) {
-          return items[index + 1];
-      }
-      return null;
-    };
-
-    const getPrevious = (imageId) => {
-        let index = items.findIndex(e => e.id === imageId);
-        if (index !== -1 && index !== 0) {
-            return items[index - 1];
-        }
-        return null;
-    };
+    // useEffect(() => {
+    //     // let intervalId = setInterval((e) => {
+    //     //     fetchGalleryItems().then(response => {
+    //     //         console.log(response);
+    //     //         let newItems = items.splice(0);
+    //     //         newItems.push(...response.data);
+    //     //         setItems(newItems);
+    //     //     })
+    //     // }, 1000);
+    //     // return () => clearInterval(intervalId);
+    //     // setItems(galleryItems);
+    //     console.log(selectedImage);
+    // }, [selectedImage]);
+    //
 
     return (
         <div className="container">
-                <GalleryModal />
-                <GalleryContext.Provider value={{getNext, getPrevious, selectedImage, setSelectedImage}}>
+            <GalleryModalProvider>
+
+                <GalleryContext.Provider value={{selectedImage, setSelectedImage, items}}>
                     {
                         items.map((e, index) => {
                             return (
@@ -60,7 +55,10 @@ const Gallery = () => {
                             )
                         })
                     }
+                    <GalleryModal />
                 </GalleryContext.Provider>
+            </GalleryModalProvider>
+
         </div>
     )
 };

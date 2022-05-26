@@ -1,4 +1,4 @@
-import axios from "./index";
+import axios from "./axios";
 import {useEffect} from "react";
 
 // jest.mock("axios");
@@ -284,3 +284,4 @@ export const galleryItems = [
         "description": "Oghn qehm givrhdtq pa jggtsuag hbchljpvxz tqvit 74 pjdxh",
         "image": "http://dummyimage.com/1217x387.png/5fa2dd/ffffff"
     }];
+
