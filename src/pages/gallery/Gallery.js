@@ -1,5 +1,6 @@
 import "./Gallery.scss";
 import React from "react";
+import GalleryItem from "./gallery-item/GalleryItem";
 
 const Gallery = () => {
 
@@ -22,6 +23,7 @@ const Gallery = () => {
                 items.map((e, index) => {
                     return (
                         <div key={index} className="gallery-item">
+                            <GalleryItem/>
                         </div>
                     )
                 })
