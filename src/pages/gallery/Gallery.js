@@ -24,7 +24,6 @@ const Gallery = () => {
             setItems(items => {
                 let nt = [...items];
                 nt.push(...response.data);
-                console.log(nt);
                 return nt;
             });
         });
