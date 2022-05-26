@@ -1,5 +1,6 @@
 import axios from "./axios";
 import {useEffect} from "react";
+import { axiosMockAdapterInstance } from './axios';
 
 // jest.mock("axios");
 
@@ -29,7 +30,11 @@ import {useEffect} from "react";
 //     // });
 // });
 
-
+axiosMockAdapterInstance.onGet("").reply(() => {
+    let newItems = galleryItems.map(e => e);
+    newItems.forEach(e => e.id = Math.random());
+    return [200, newItems]
+});
 export const fetchGalleryItems = () => axios.get("");
 
 export const galleryItems = [

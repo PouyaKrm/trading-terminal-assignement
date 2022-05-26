@@ -12,17 +12,23 @@ const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState({});
 
     useEffect(() => {
-        // let intervalId = setInterval((e) => {
-        //     fetchGalleryItems().then(response => {
-        //         console.log(response);
-        //         let newItems = items.splice(0);
-        //         newItems.push(...response.data);
-        //         setItems(newItems);
-        //     })
-        // }, 1000);
-        // return () => clearInterval(intervalId);
+        getItems();
+        let intervalId = setInterval((e) => {
+          getItems();
+        }, 10000);
+        return () => clearInterval(intervalId);
         // setItems(galleryItems);
     }, []);
+
+    const getItems = () => {
+        fetchGalleryItems().then(response => {
+            console.log(response);
+            let newItems = items.slice();
+            newItems.push(...response.data);
+            console.log(newItems);
+            setItems(newItems);
+        });
+    };
 
     // useEffect(() => {
     //     // let intervalId = setInterval((e) => {

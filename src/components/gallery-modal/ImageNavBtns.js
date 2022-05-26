@@ -37,7 +37,6 @@ const ImageNavBtns = () => {
         }
     };
 
-
     return (
         <>
             {!isLast &&
