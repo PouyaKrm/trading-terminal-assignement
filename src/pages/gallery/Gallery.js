@@ -1,17 +1,15 @@
 import "./Gallery.scss";
 import React, {useContext, useEffect, useState} from "react";
 import GalleryItem from "../../components/gallery-item/GalleryItem";
-import axios from "../../utils/axios";
 import {fetchGalleryItems, galleryItems} from "../../utils/gallery";
-import GalleryContext from "../../contexts/GalleryContext";
 import GalleryModal from "../../components/gallery-modal/GalleryModal";
 import {GalleryModalContext, GalleryModalProvider} from "../../contexts/GalleryModalContext";
+import GalleryContext from "../../contexts/GalleryContext";
 
 const Gallery = () => {
 
     const [items, setItems] = useState([]);
     const [selectedImage, setSelectedImage] = useState({});
-    // const {setOpen} = useContext(GalleryModalContext);
 
     useEffect(() => {
         // let intervalId = setInterval((e) => {
@@ -23,7 +21,7 @@ const Gallery = () => {
         //     })
         // }, 1000);
         // return () => clearInterval(intervalId);
-        setItems(galleryItems);
+        // setItems(galleryItems);
     }, []);
 
     // useEffect(() => {

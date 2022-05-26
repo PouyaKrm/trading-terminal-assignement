@@ -1,7 +1,7 @@
 import "./GalleryItem.scss";
 import React, {useContext} from "react";
-import GalleryContext from "../../../contexts/GalleryContext";
-import {GalleryModalContext} from "../../../contexts/GalleryModalContext";
+import GalleryContext from "../../contexts/GalleryContext";
+import {GalleryModalContext} from "../../contexts/GalleryModalContext";
 
 const GalleryItem = ({imageData}) => {
 
