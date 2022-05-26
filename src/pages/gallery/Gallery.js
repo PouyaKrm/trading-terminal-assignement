@@ -1,14 +1,18 @@
 import "./Gallery.scss";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import GalleryItem from "./gallery-item/GalleryItem";
 import axios from "../../utils";
 import {fetchGalleryItems, galleryItems} from "../../utils/gallery";
 import GalleryContext from "../../contexts/GalleryContext";
+import GalleryModal from "../../components/gallery-modal/GalleryModal";
+import {ModalContext, ModalProvider} from "../../contexts/ModalContext";
 
 const Gallery = () => {
 
     const [items, setItems] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
+    const {setOpen} = useContext(ModalContext);
+
     useEffect(() => {
         // let intervalId = setInterval((e) => {
         //     fetchGalleryItems().then(response => {
@@ -21,8 +25,11 @@ const Gallery = () => {
         // return () => clearInterval(intervalId);
 
         setItems(galleryItems);
+        if (setOpen) {
+            setOpen(true);
+        }
 
-    }, []);
+    }, [setOpen]);
 
     const getNext = (imageId) => {
       let index = items.findIndex(e => e.id === imageId);
@@ -42,18 +49,18 @@ const Gallery = () => {
 
     return (
         <div className="container">
-            <GalleryContext.Provider value={{getNext, getPrevious, selectedImage, setSelectedImage}}>
-                {
-                    items.map((e, index) => {
-                        return (
-                            <div key={index} className="gallery-item">
-                                <GalleryItem imageData={e}/>
-                            </div>
-                        )
-                    })
-                }
-            </GalleryContext.Provider>
-
+                <GalleryModal />
+                <GalleryContext.Provider value={{getNext, getPrevious, selectedImage, setSelectedImage}}>
+                    {
+                        items.map((e, index) => {
+                            return (
+                                <div key={index} className="gallery-item">
+                                    <GalleryItem imageData={e}/>
+                                </div>
+                            )
+                        })
+                    }
+                </GalleryContext.Provider>
         </div>
     )
 };
